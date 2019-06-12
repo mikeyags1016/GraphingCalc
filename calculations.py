@@ -14,7 +14,7 @@ class Calculate:
         self.operators = "+-/*^"
         self.nums = ".0123456789"
         self.vars = {
-            'e': 2.7182818284590452353602874713527,
+            'e': 2.718281828459045,
             'π': 3.141592653589793}
 
     # Basic operations

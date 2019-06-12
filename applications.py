@@ -85,7 +85,7 @@ class Application(Frame):
         self.mode = Button(text="MODE", height=3, width=6, borderwidth=0,
                             highlightbackground="blue", font=('Helvetica', '11', "bold"))
         self.mode.grid(row=1, column=1, sticky="nesw")
-        self.delete = Button(text="DEL", height=3, width=6, borderwidth=0,
+        self.delete = Button(text="DEL", height=3, width=6,  borderwidth=0,
                             highlightbackground="black", font=('Helvetica', '11', "bold"),
                             command=lambda: self.deleteEnd())
         self.delete.grid(row=1, column=2, sticky="nesw")

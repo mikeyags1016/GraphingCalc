@@ -12,4 +12,4 @@ if __name__ == '__main__':
 
     messagebox.showinfo("Welcome!", message)
 
-    app.mainloop() # Starts the application
+    app.mainloop()

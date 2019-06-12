@@ -6,7 +6,6 @@ class Calculate:
     def __init__(self, expression):
         self.expression = expression
 
-        # Create indivitual storage for values and operations
         self.vals = Stack()
         self.ops = Stack()
         self.funcs = Stack()
@@ -45,7 +44,6 @@ class Calculate:
 
     # Checks if the current operation is higher in PEMDAS than the previous one
     def currentOpHasPrec(self, op1, op2):
-        # Current operation doesn't have precedence if a parenthesis was stored
         if op2 == "(" or op2 == ")":
             return False
         elif (op1 == '*' or op1 == '/' or op1 == "^" or op1 == "(") \
@@ -98,6 +96,7 @@ class Calculate:
         # Place holders to store any given current number or function
         self.currentNum = ""
         self.currentFuncName = ""
+
         self.parenCounter = 0
         self.index = 0
 
@@ -126,7 +125,6 @@ class Calculate:
 
                 self.parenCounter += 1
 
-            # Evaluate everything inside the given parenthesis
             elif self.currentChar == ")":
                 self.pushCurrentNum()
                 self.evaluateParen()
@@ -142,9 +140,11 @@ class Calculate:
 
         # Evaluates any remaining parenthesis in the expression
         self.pushCurrentNum()
+
         while self.parenCounter > 0:
             self.evaluateParen()
             self.parenCounter -= 1
+
         while not self.ops.isEmpty():
             self.pushValue(self.operations(self.ops.pop(), self.vals.pop(), self.vals.pop()))
 

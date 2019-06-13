@@ -66,6 +66,15 @@ class Application(Frame):
         except:
             messagebox.showinfo("Error", "Invalid Input")
 
+    def secondButton(self):
+        # If clicked, replace the text and functions of all buttons with their alternatives
+        if self.defaultMode:
+            self.defaultMode = False
+            self.secondBtnFunctions()
+        else:
+            self.defaultMode = True
+            self.defaultBtnFunctions()
+
     # Places all widgets and buttons
     def createWidgets(self):
         self.displayScroll = Scrollbar(self.master)
@@ -78,7 +87,7 @@ class Application(Frame):
         self.displayScroll.config(command=self.display.xview)
 
         # First Row
-        self.second = Button(self.master, text="2nd", height=3, width=6, borderwidth=0,
+        self.second = Button(text="2nd", height=3, width=6, borderwidth=0,
                             highlightbackground="yellow", font=('Helvetica', '11', "bold"),
                             command=lambda: self.secondButton())
         self.second.grid(row=1, column=0, sticky="nesw")
@@ -243,15 +252,6 @@ class Application(Frame):
                             highlightbackground="blue", command=lambda: self.calculate(),
                             font=('Helvetica', '11', "bold"))
         self.equals.grid(row=9, column=4, sticky="nesw")
-
-    def secondButton(self):
-        # If clicked, replace the text and functions of all buttons with their alternatives
-        if self.defaultMode:
-            self.defaultMode = False
-            self.secondBtnFunctions()
-        else:
-            self.defaultMode = True
-            self.defaultBtnFunctions()
 
     def secondBtnFunctions(self):
         # First Row

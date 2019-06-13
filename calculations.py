@@ -153,3 +153,4 @@ class Calculate:
 # Problems:
 # Can't place functions at the user's cursor
 # Can't calculate expression when enter key is pressed
+# Implement functions in "2nd" button tab

@@ -153,4 +153,3 @@ class Calculate:
 # Problems:
 # Can't place functions at the user's cursor
 # Can't calculate expression when enter key is pressed
-# Operators can't work with variables

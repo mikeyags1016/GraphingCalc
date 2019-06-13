@@ -14,8 +14,8 @@ class Calculate:
         self.operators = "+-/*^"
         self.nums = ".0123456789"
         self.vars = {
-            'e': 2.718281828459045,
-            'π': 3.141592653589793}
+            'e': Decimal(2.718281828459045),
+            'π': Decimal(3.141592653589793)}
 
     # Basic operations
     def operations(self, op, var1, var2):
@@ -153,3 +153,4 @@ class Calculate:
 # Problems:
 # Can't place functions at the user's cursor
 # Can't calculate expression when enter key is pressed
+# Operators can't work with variables

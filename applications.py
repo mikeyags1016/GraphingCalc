@@ -248,183 +248,187 @@ class Application(Frame):
         # If clicked, replace the text and functions of all buttons with their alternatives
         if self.defaultMode:
             self.defaultMode = False
-
-            # First Row
-            self.mode["text"] = "QUIT"
-
-            # Second Row
-            self.alpha["text"] = "A-LOCK"
-            self.variables["text"] = "LINK"
-            self.stat["text"] = "LIST"
-
-            # Third Row
-            self.math["text"] = "TEST"
-            self.apps["text"] = "ANGLE"
-            self.prgm["text"] = "DRAW"
-            self.vars["text"] = "DISTR"
-
-            # Fourth Row
-            self.inverse["text"] = "MATRX"
-            self.inverse["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
-            self.sine["text"] = "SIN^-1"
-            self.sine["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
-            self.cosine["text"] = "COS^-1"
-            self.cosine["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
-            self.tangent["text"] = "TAN^-1"
-            self.tangent["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
-
-            self.exponent["text"] = "π"
-            self.exponent["command"] = lambda: [self.enterInEntry("π"), self.secondButton()]
-
-            # Fifth Row
-            self.squared["text"] = "√"
-            self.squared["command"] = lambda: [self.enterInEntry("√("), self.secondButton()]
-            self.comma["text"] = "EE"
-            self.comma["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
-            self.openParen["text"] = "{"
-            self.openParen["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
-            self.closedParen["text"] = "}"
-            self.closedParen["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
-
-            self.divide["text"] = "e"
-            self.divide["command"] = lambda: [self.enterInEntry("e"), self.secondButton()]
-
-            # Sixth Row
-            self.commonLog["text"] = "10^x"
-            self.commonLog["command"] = lambda: [self.enterInEntry("10^("), self.secondButton()]
-            self.seven["text"] = "u"
-            self.seven["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
-            self.eight["text"] = "v"
-            self.eight["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
-            self.nine["text"] = "w"
-            self.nine["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
-
-            self.multiply["text"] = "["
-            self.multiply["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
-
-            # Seventh Row
-            self.naturalLog["text"] = "e"
-            self.naturalLog["command"] = lambda: [self.enterInEntry("e"), self.secondButton()]
-            self.four["text"] = "L4"
-            self.four["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
-            self.five["text"] = "L5"
-            self.five["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
-            self.six["text"] = "L6"
-            self.six["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
-
-            self.subtract["text"] = "]"
-            self.subtract["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
-
-            # Eighth Row
-            self.sto["text"] = "RCL"
-            self.one["text"] = "L1"
-            self.one["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
-            self.two["text"] = "L2"
-            self.two["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
-            self.three["text"] = "L3"
-            self.three["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
-
-            self.add["text"] = "MEM"
-            self.add["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
-
-            # Ninth Row
-            self.zero["text"] = "CATALOG"
-            self.zero["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
-            self.zero["font"] = ('Helvetica', '8', "bold")
-            self.decimal["text"] = "i"
-            self.decimal["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
-            self.negative["text"] = "ANS"
-            self.negative["command"] = lambda: [self.enterInEntry(self.storedAnswers[-1]), self.secondButton()]
-            self.equals["text"] = "ENTRY"
-            self.equals["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
+            self.secondBtnFunctions()
         else:
             self.defaultMode = True
+            self.defaultBtnFunctions()
 
-            # First Row
-            self.mode["text"] = "MODE"
+    def secondBtnFunctions(self):
+        # First Row
+        self.mode["text"] = "QUIT"
 
-            # Second Row
-            self.alpha["text"] = "ALPHA"
-            self.variables["text"] = "X,T,0,n"
-            self.stat["text"] = "STAT"
+        # Second Row
+        self.alpha["text"] = "A-LOCK"
+        self.variables["text"] = "LINK"
+        self.stat["text"] = "LIST"
 
-            # Third Row
-            self.math["text"] = "MATH"
-            self.apps["text"] = "APPS"
-            self.prgm["text"] = "PGRM"
-            self.vars["text"] = "VARS"
+        # Third Row
+        self.math["text"] = "TEST"
+        self.apps["text"] = "ANGLE"
+        self.prgm["text"] = "DRAW"
+        self.vars["text"] = "DISTR"
 
-            # Fourth Row
-            self.inverse["text"] = "x^-1"
-            self.inverse["command"] = lambda: self.enterInEntry("x^(-1)")
-            self.sine["text"] = "SIN"
-            self.sine["command"] = lambda: self.enterInEntry("sin(")
-            self.cosine["text"] = "COS"
-            self.cosine["command"] = lambda: self.enterInEntry("cos(")
-            self.tangent["text"] = "TAN"
-            self.tangent["command"] = lambda: self.enterInEntry("tan(")
+        # Fourth Row
+        self.inverse["text"] = "MATRX"
+        self.inverse["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
+        self.sine["text"] = "SIN^-1"
+        self.sine["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
+        self.cosine["text"] = "COS^-1"
+        self.cosine["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
+        self.tangent["text"] = "TAN^-1"
+        self.tangent["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
 
-            self.exponent["text"] = "^"
-            self.exponent["command"] = lambda: self.enterInEntry("^")
+        self.exponent["text"] = "π"
+        self.exponent["command"] = lambda: [self.enterInEntry("π"), self.secondButton()]
 
-            # Fifth Row
-            self.squared["text"] = "x^2"
-            self.squared["command"] = lambda: self.enterInEntry("^2")
-            self.comma["text"] = ","
-            self.comma["command"] = lambda: self.enterInEntry(",")
-            self.openParen["text"] = "("
-            self.openParen["command"] = lambda: self.enterInEntry("(")
-            self.closedParen["text"] = ")"
-            self.closedParen["command"] = lambda: self.enterInEntry(")")
+        # Fifth Row
+        self.squared["text"] = "√"
+        self.squared["command"] = lambda: [self.enterInEntry("√("), self.secondButton()]
+        self.comma["text"] = "EE"
+        self.comma["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
+        self.openParen["text"] = "{"
+        self.openParen["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
+        self.closedParen["text"] = "}"
+        self.closedParen["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
 
-            self.divide["text"] = "%"
-            self.divide["command"] = lambda: self.enterInEntry("/")
+        self.divide["text"] = "e"
+        self.divide["command"] = lambda: [self.enterInEntry("e"), self.secondButton()]
 
-            # Sixth Row
-            self.commonLog["text"] = "LOG"
-            self.commonLog["command"] = lambda: self.enterInEntry("log(")
-            self.seven["text"] = "7"
-            self.seven["command"] = lambda: self.enterInEntry("7")
-            self.eight["text"] = "8"
-            self.eight["command"] = lambda: self.enterInEntry("8")
-            self.nine["text"] = "9"
-            self.nine["command"] = lambda: self.enterInEntry("9")
+        # Sixth Row
+        self.commonLog["text"] = "10^x"
+        self.commonLog["command"] = lambda: [self.enterInEntry("10^("), self.secondButton()]
+        self.seven["text"] = "u"
+        self.seven["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
+        self.eight["text"] = "v"
+        self.eight["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
+        self.nine["text"] = "w"
+        self.nine["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
 
-            self.multiply["text"] = "X"
-            self.multiply["command"] = lambda: self.enterInEntry("*")
+        self.multiply["text"] = "["
+        self.multiply["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
 
-            # Seventh Row
-            self.naturalLog["text"] = "LN"
-            self.naturalLog["command"] = lambda: self.enterInEntry("ln(")
-            self.four["text"] = "4"
-            self.four["command"] = lambda: self.enterInEntry("4")
-            self.five["text"] = "5"
-            self.five["command"] = lambda: self.enterInEntry("5")
-            self.six["text"] = "6"
-            self.six["command"] = lambda: self.enterInEntry("6")
+        # Seventh Row
+        self.naturalLog["text"] = "e"
+        self.naturalLog["command"] = lambda: [self.enterInEntry("e"), self.secondButton()]
+        self.four["text"] = "L4"
+        self.four["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
+        self.five["text"] = "L5"
+        self.five["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
+        self.six["text"] = "L6"
+        self.six["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
 
-            self.subtract["text"] = "-"
-            self.subtract["command"] = lambda: self.enterInEntry("-")
+        self.subtract["text"] = "]"
+        self.subtract["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
 
-            # Eighth Row
-            self.sto["text"] = "STO->"
-            self.one["text"] = "1"
-            self.one["command"] = lambda: self.enterInEntry("1")
-            self.two["text"] = "2"
-            self.two["command"] = lambda: self.enterInEntry("2")
-            self.three["text"] = "3"
-            self.three["command"] = lambda: self.enterInEntry("3")
+        # Eighth Row
+        self.sto["text"] = "RCL"
+        self.one["text"] = "L1"
+        self.one["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
+        self.two["text"] = "L2"
+        self.two["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
+        self.three["text"] = "L3"
+        self.three["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
 
-            self.add["text"] = "+"
-            self.add["command"] = lambda: self.enterInEntry("+")
+        self.add["text"] = "MEM"
+        self.add["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
 
-            # Ninth Row
-            self.zero["text"] = "0"
-            self.zero["command"] = lambda: self.enterInEntry("0")
-            self.zero["font"] = ('Helvetica', '11', "bold")
-            self.decimal["text"] = "."
-            self.decimal["command"] = lambda: self.enterInEntry(".")
-            self.negative["text"] = "(-)"
-            self.negative["command"] = lambda: self.enterInEntry("(-")
-            self.equals["text"] = "ENTER"
-            self.equals["command"] = lambda: self.calculate()
+        # Ninth Row
+        self.zero["text"] = "CATALOG"
+        self.zero["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
+        self.zero["font"] = ('Helvetica', '8', "bold")
+        self.decimal["text"] = "i"
+        self.decimal["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
+        self.negative["text"] = "ANS"
+        self.negative["command"] = lambda: [self.enterInEntry(self.storedAnswers[-1]), self.secondButton()]
+        self.equals["text"] = "ENTRY"
+        self.equals["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
+
+    def defaultBtnFunctions(self):
+        # First Row
+        self.mode["text"] = "MODE"
+
+        # Second Row
+        self.alpha["text"] = "ALPHA"
+        self.variables["text"] = "X,T,0,n"
+        self.stat["text"] = "STAT"
+
+        # Third Row
+        self.math["text"] = "MATH"
+        self.apps["text"] = "APPS"
+        self.prgm["text"] = "PGRM"
+        self.vars["text"] = "VARS"
+
+        # Fourth Row
+        self.inverse["text"] = "x^-1"
+        self.inverse["command"] = lambda: self.enterInEntry("x^(-1)")
+        self.sine["text"] = "SIN"
+        self.sine["command"] = lambda: self.enterInEntry("sin(")
+        self.cosine["text"] = "COS"
+        self.cosine["command"] = lambda: self.enterInEntry("cos(")
+        self.tangent["text"] = "TAN"
+        self.tangent["command"] = lambda: self.enterInEntry("tan(")
+
+        self.exponent["text"] = "^"
+        self.exponent["command"] = lambda: self.enterInEntry("^")
+
+        # Fifth Row
+        self.squared["text"] = "x^2"
+        self.squared["command"] = lambda: self.enterInEntry("^2")
+        self.comma["text"] = ","
+        self.comma["command"] = lambda: self.enterInEntry(",")
+        self.openParen["text"] = "("
+        self.openParen["command"] = lambda: self.enterInEntry("(")
+        self.closedParen["text"] = ")"
+        self.closedParen["command"] = lambda: self.enterInEntry(")")
+
+        self.divide["text"] = "%"
+        self.divide["command"] = lambda: self.enterInEntry("/")
+
+        # Sixth Row
+        self.commonLog["text"] = "LOG"
+        self.commonLog["command"] = lambda: self.enterInEntry("log(")
+        self.seven["text"] = "7"
+        self.seven["command"] = lambda: self.enterInEntry("7")
+        self.eight["text"] = "8"
+        self.eight["command"] = lambda: self.enterInEntry("8")
+        self.nine["text"] = "9"
+        self.nine["command"] = lambda: self.enterInEntry("9")
+
+        self.multiply["text"] = "X"
+        self.multiply["command"] = lambda: self.enterInEntry("*")
+
+        # Seventh Row
+        self.naturalLog["text"] = "LN"
+        self.naturalLog["command"] = lambda: self.enterInEntry("ln(")
+        self.four["text"] = "4"
+        self.four["command"] = lambda: self.enterInEntry("4")
+        self.five["text"] = "5"
+        self.five["command"] = lambda: self.enterInEntry("5")
+        self.six["text"] = "6"
+        self.six["command"] = lambda: self.enterInEntry("6")
+
+        self.subtract["text"] = "-"
+        self.subtract["command"] = lambda: self.enterInEntry("-")
+
+        # Eighth Row
+        self.sto["text"] = "STO->"
+        self.one["text"] = "1"
+        self.one["command"] = lambda: self.enterInEntry("1")
+        self.two["text"] = "2"
+        self.two["command"] = lambda: self.enterInEntry("2")
+        self.three["text"] = "3"
+        self.three["command"] = lambda: self.enterInEntry("3")
+
+        self.add["text"] = "+"
+        self.add["command"] = lambda: self.enterInEntry("+")
+
+        # Ninth Row
+        self.zero["text"] = "0"
+        self.zero["command"] = lambda: self.enterInEntry("0")
+        self.zero["font"] = ('Helvetica', '11', "bold")
+        self.decimal["text"] = "."
+        self.decimal["command"] = lambda: self.enterInEntry(".")
+        self.negative["text"] = "(-)"
+        self.negative["command"] = lambda: self.enterInEntry("(-")
+        self.equals["text"] = "ENTER"
+        self.equals["command"] = lambda: self.calculate()

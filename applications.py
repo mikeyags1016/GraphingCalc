@@ -75,6 +75,19 @@ class Application(Frame):
             self.defaultMode = True
             self.defaultBtnFunctions()
 
+    def createWindow(self):
+        self.modeMenu = Toplevel()
+
+        self.normal = Button(text="NORMAL", width=6, font=('Helvetica', '11', "bold"))
+        self.normal.grid(row=2, column=0)
+        self.science = Button(text="SCI", width=6, font=('Helvetica', '11', "bold"))
+        self.science.grid(row=2, column=1)
+        self.english = Button(text="ENG",  width=6, font=('Helvetica', '11', "bold"))
+        self.english.grid(row=2, column=2)
+
+    def destroyMenu(self):
+        self.modeMenu.destroy()
+
     # Places all widgets and buttons
     def createWidgets(self):
         self.displayScroll = Scrollbar(self.master)
@@ -92,7 +105,8 @@ class Application(Frame):
                             command=lambda: self.secondButton())
         self.second.grid(row=1, column=0, sticky="nesw")
         self.mode = Button(text="MODE", height=3, width=6, borderwidth=0,
-                            highlightbackground="blue", font=('Helvetica', '11', "bold"))
+                            highlightbackground="blue", font=('Helvetica', '11', "bold"),
+                            command=lambda: self.createWindow())
         self.mode.grid(row=1, column=1, sticky="nesw")
         self.delete = Button(text="DEL", height=3, width=6,  borderwidth=0,
                             highlightbackground="black", font=('Helvetica', '11', "bold"),
@@ -256,6 +270,7 @@ class Application(Frame):
     def secondBtnFunctions(self):
         # First Row
         self.mode["text"] = "QUIT"
+        self.mode["command"] = lambda: self.destroyMenu()
 
         # Second Row
         self.alpha["text"] = "A-LOCK"
@@ -346,6 +361,7 @@ class Application(Frame):
     def defaultBtnFunctions(self):
         # First Row
         self.mode["text"] = "MODE"
+        self.mode["command"] = lambda: self.createWindow()
 
         # Second Row
         self.alpha["text"] = "ALPHA"

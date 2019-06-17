@@ -19,6 +19,10 @@ class Application(Frame):
         self.defaultMode = True # For inverse function
         self.storedAnswers = []
 
+        # Calculator settings
+        self.calcMode = IntVar()
+        self.angleMode = IntVar()
+
     def clearEntry(self):
         # Wipes stored answers if any
         if self.display.get() == "0":
@@ -74,23 +78,6 @@ class Application(Frame):
         else:
             self.defaultMode = True
             self.defaultBtnFunctions()
-
-    def modeMenu(self):
-        self.mode = Toplevel(self.master)
-        self.x = self.master.winfo_x()
-        self.y = self.master.winfo_y()
-        self.mode.geometry("+%d+%d" % (self.x, self.y))
-        self.mode.resizable(0, 0)
-
-        self.normal = Button(self.mode, text="NORMAL", width=6, font=('Helvetica', '11', "bold"))
-        self.normal.grid(row=2, column=0)
-        self.science = Button(self.mode, text="SCI", width=6, font=('Helvetica', '11', "bold"))
-        self.science.grid(row=2, column=1)
-        self.english = Button(self.mode, text="ENG",  width=6, font=('Helvetica', '11', "bold"))
-        self.english.grid(row=2, column=2)
-
-    def destroyMenu(self):
-        self.mode.destroy()
 
     def createWidgets(self):
         self.displayScroll = Scrollbar(self.master)
@@ -274,7 +261,7 @@ class Application(Frame):
     def secondBtnFunctions(self):
         # First Row
         self.modeButton["text"] = "QUIT"
-        self.modeButton["command"] = lambda: self.destroyMenu()
+        self.modeButton["command"] = lambda: self.destroyMenus()
 
         # Second Row
         self.alpha["text"] = "A-LOCK"
@@ -453,3 +440,37 @@ class Application(Frame):
         self.negative["command"] = lambda: self.enterInEntry("(-")
         self.equals["text"] = "ENTER"
         self.equals["command"] = lambda: self.calculate()
+
+    # Menu options for mode options
+    def modeMenu(self):
+        self.mode = Toplevel(self.master)
+        self.x = self.master.winfo_x()
+        self.y = self.master.winfo_y()
+        self.mode.geometry("+%d+%d" % (self.x, self.y))
+        self.mode.resizable(0, 0)
+
+        # Calculator Modes
+        self.normal = Radiobutton(self.mode, text="NORMAL", font=('Helvetica', '8'),
+                                        variable=self.calcMode, value=0)
+        self.normal.grid(row=0, column=0)
+        self.scientific = Radiobutton(self.mode, text="SCI", font=('Helvetica', '8'),
+                                        variable=self.calcMode, value=1)
+        self.scientific.grid(row=0, column=1)
+        self.english = Radiobutton(self.mode, text="NORMAL", font=('Helvetica', '8'),
+                                        variable=self.calcMode, value=2)
+        self.english.grid(row=0, column=2)
+
+        # Angle Mode
+        self.radian = Radiobutton(self.mode, text="RADIAN", font=('Helvetica', '8'),
+                                        variable=self.angleMode, value=1)
+        self.radian.grid(row=1, column=0)
+        self.degree = Radiobutton(self.mode, text="DEGREE", font=('Helvetica', '8'),
+                                        variable=self.angleMode, value=0)
+        self.degree.grid(row=1, column=1)
+
+
+    def destroyMenus(self):
+        try:
+            self.mode.destroy()
+        except:
+            pass

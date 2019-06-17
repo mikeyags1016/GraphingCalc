@@ -7,9 +7,4 @@ if __name__ == '__main__':
     app.master.resizable(0, 0)
     app.master.configure(bg="grey")
 
-    message = "For more information on how to use this application, " \
-                          "go to the README file of this project"
-
-    messagebox.showinfo("Welcome!", message)
-
     app.mainloop()

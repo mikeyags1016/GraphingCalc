@@ -3,7 +3,9 @@ from decimal import Decimal
 from containers import *
 
 class Calculate:
-    def __init__(self, expression, angleOption):
+    def __init__(self, expression,
+                 angleOption,
+                 calcOption):
         self.expression = expression
 
         self.vals = Stack()
@@ -18,15 +20,38 @@ class Calculate:
             'π': Decimal(3.141592653589793)}
 
         self.angleOption = angleOption
+        self.calcOption = calcOption
 
     # Defines whether to use degrees or radians for angle based calculations
-    def angleMode(self, angleOption, var1):
+    def angleMode(self, angleOption, var):
         self.options = {
-            0: math.radians(var1),
-            1: math.degrees(var1)
+            0: math.radians(var),
+            1: math.degrees(var)
         }
 
         return self.options[angleOption]
+
+    # Defines whether to use degrees or radians for angle based calculations
+    def calcMode(self, calcOption, value):
+        self.options = {
+            0: value,
+            1: self.sciConversion(value),
+            2: self.engConversion(value)
+        }
+
+        return self.options[calcOption]
+
+    def sciConversion(self, value):
+        power = len(str(value)) - 1
+        base = value/(10**power)
+        return str(base) + " E" + str(power)
+
+    def engConversion(self, value):
+        power = len(str(value)) - 1
+        if power > 2:
+            base = value/(10**power)
+            return str(base) + " E" + str(power)
+        return str(value) + " E0"
 
     # Basic operations
     def operations(self, op, var1, var2):
@@ -160,6 +185,4 @@ class Calculate:
         while not self.ops.isEmpty():
             self.pushValue(self.operations(self.ops.pop(), self.vals.pop(), self.vals.pop()))
 
-        return self.vals.peek()
-
-# Problems:
+        return self.calcMode(self.calcOption, self.vals.peek())

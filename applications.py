@@ -57,7 +57,9 @@ class Application(Frame):
 
     def calculate(self):
         self.expression = self.display.get()
-        self.parser = Calculate(self.expression, int(self.angleMode.get()))
+        self.parser = Calculate(self.expression,
+                                int(self.angleMode.get()),
+                                int(self.calcMode.get()))
 
         # Try to calculate the current expression and display it
         # Display error message if input is invalid
@@ -456,7 +458,7 @@ class Application(Frame):
         self.scientific = Radiobutton(self.mode, text="SCI", font=('Helvetica', '8'),
                                         variable=self.calcMode, value=1)
         self.scientific.grid(row=0, column=1)
-        self.english = Radiobutton(self.mode, text="NORMAL", font=('Helvetica', '8'),
+        self.english = Radiobutton(self.mode, text="ENG", font=('Helvetica', '8'),
                                         variable=self.calcMode, value=2)
         self.english.grid(row=0, column=2)
 

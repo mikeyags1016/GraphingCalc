@@ -3,7 +3,7 @@ from decimal import Decimal
 from containers import *
 
 class Calculate:
-    def __init__(self, expression):
+    def __init__(self, expression, angleOption):
         self.expression = expression
 
         self.vals = Stack()
@@ -16,6 +16,17 @@ class Calculate:
         self.vars = {
             'e': Decimal(2.718281828459045),
             'π': Decimal(3.141592653589793)}
+
+        self.angleOption = angleOption
+
+    # Defines whether to use degrees or radians for angle based calculations
+    def angleMode(self, angleOption, var1):
+        self.options = {
+            0: math.radians(var1),
+            1: math.degrees(var1)
+        }
+
+        return self.options[angleOption]
 
     # Basic operations
     def operations(self, op, var1, var2):
@@ -32,9 +43,9 @@ class Calculate:
     # Basic functions
     def functions(self, function, var1):
         self.functionsList = {
-            "sin": math.sin(math.radians(var1)),
-            "cos": math.cos(math.radians(var1)),
-            "tan": math.tan(math.radians(var1)) if var1 != 90 else None,
+            "sin": math.sin(self.angleMode(self.angleOption, var1)),
+            "cos": math.cos(self.angleMode(self.angleOption, var1)),
+            "tan": math.tan(self.angleMode(self.angleOption, var1)) if var1 != 90 else None,
             "log": math.log10(var1),
             "ln": math.log(var1),
             "√": math.sqrt(var1)
@@ -151,6 +162,3 @@ class Calculate:
         return self.vals.peek()
 
 # Problems:
-# Can't place functions at the user's cursor
-# Can't calculate expression when enter key is pressed
-# Implement functions in "2nd" button tab win

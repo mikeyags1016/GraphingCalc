@@ -57,7 +57,7 @@ class Application(Frame):
 
     def calculate(self):
         self.expression = self.display.get()
-        self.parser = Calculate(self.expression)
+        self.parser = Calculate(self.expression, int(self.angleMode.get()))
 
         # Try to calculate the current expression and display it
         # Display error message if input is invalid

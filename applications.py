@@ -83,7 +83,7 @@ class Application(Frame):
 
     def createWidgets(self):
         self.displayScroll = Scrollbar(self.master)
-        self.displayScroll.grid(row=0, column=5, rowspan=2)
+        self.displayScroll.grid(row=0, column=5, rowspan=8, sticky='ns')
 
         self.display = Entry(self.master, xscrollcommand=self.displayScroll.set, width=24)
         self.display.insert(0, "0")

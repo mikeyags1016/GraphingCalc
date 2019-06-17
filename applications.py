@@ -85,9 +85,9 @@ class Application(Frame):
         self.displayScroll = Scrollbar(self.master)
         self.displayScroll.grid(row=0, column=5, rowspan=2)
 
-        self.display = Entry(self.master, xscrollcommand=self.displayScroll.set)
+        self.display = Entry(self.master, xscrollcommand=self.displayScroll.set, width=24)
         self.display.insert(0, "0")
-        self.display.grid(row=0, column=0, columnspan=4)
+        self.display.grid(row=0, column=0, columnspan=5)
 
         self.displayScroll.config(command=self.display.xview)
 
@@ -100,164 +100,141 @@ class Application(Frame):
                             highlightbackground="blue", font=('Helvetica', '11', "bold"),
                             command=lambda: self.modeMenu())
         self.modeButton.grid(row=1, column=1, sticky="nesw")
+        self.math = Button(self.master, text="MATH", height=3, width=6, borderwidth=0,
+                           highlightbackground="green", font=('Helvetica', '11', "bold"))
+        self.math.grid(row=1, column=2, sticky="nesw")
         self.delete = Button(self.master, text="DEL", height=3, width=6,  borderwidth=0,
                             highlightbackground="black", font=('Helvetica', '11', "bold"),
                             command=lambda: self.deleteEnd())
-        self.delete.grid(row=1, column=2, sticky="nesw")
-
-        # Second Row
-        self.alpha = Button(self.master, text="ALPHA", height=3, width=6, borderwidth=0,
-                            highlightbackground="green", font=('Helvetica', '11', "bold"))
-        self.alpha.grid(row=2, column=0, sticky="nesw")
-        self.variables = Button(self.master, text="X,T,0,n", height=3, width=6, borderwidth=0,
-                            highlightbackground="blue", font=('Helvetica', '11', "bold"))
-        self.variables.grid(row=2, column=1, sticky="nesw")
-        self.stat = Button(self.master, text="STAT", height=3, width=6, borderwidth=0,
-                            highlightbackground="black", font=('Helvetica', '11', "bold"))
-        self.stat.grid(row=2, column=2, sticky="nesw")
-
-        # Third Row
-        self.math = Button(self.master, text="MATH", height=3, width=6, borderwidth=0,
-                            highlightbackground="black", font=('Helvetica', '11', "bold"))
-        self.math.grid(row=3, column=0, sticky="nesw")
-        self.apps = Button(self.master, text="APPS", height=3, width=6, borderwidth=0,
-                            highlightbackground="blue", font=('Helvetica', '11', "bold"))
-        self.apps.grid(row=3, column=1, sticky="nesw")
-        self.prgm = Button(self.master, text="PGRM", height=3, width=6, borderwidth=0,
-                            highlightbackground="black", font=('Helvetica', '11', "bold"))
-        self.prgm.grid(row=3, column=2, sticky="nesw")
-        self.vars = Button(self.master, text="VARS", height=3, width=6, borderwidth=0,
-                            highlightbackground="black", font=('Helvetica', '11', "bold"))
-        self.vars.grid(row=3, column=3, sticky="nesw")
-
+        self.delete.grid(row=1, column=3, sticky="nesw")
         self.clear = Button(self.master, text="CLEAR", height=3, width=6, borderwidth=0,
                             highlightbackground="black", command=lambda: self.clearEntry(),
                             font=('Helvetica', '11', "bold"))
-        self.clear.grid(row=3, column=4, sticky="nesw")
+        self.clear.grid(row=1, column=4, sticky="nesw")
 
-        # Fourth Row
+        # Second Row
         self.inverse = Button(self.master, text="X^-1", height=3, width=6, borderwidth=0,
-                            highlightbackground="black", command=lambda: self.enterInEntry("^(-1)"),
+                            highlightbackground="green", command=lambda: self.enterInEntry("^(-1)"),
                               font=('Helvetica', '11', "bold"))
-        self.inverse.grid(row=4, column=0, sticky="nesw")
+        self.inverse.grid(row=2, column=0, sticky="nesw")
         self.sine = Button(self.master, text="SIN", height=3, width=6, borderwidth=0,
-                            highlightbackground="black", command=lambda: self.enterInEntry("sin("),
+                            highlightbackground="green", command=lambda: self.enterInEntry("sin("),
                             font=('Helvetica', '11', "bold"))
-        self.sine.grid(row=4, column=1, sticky="nesw")
+        self.sine.grid(row=2, column=1, sticky="nesw")
         self.cosine = Button(self.master, text="COS", height=3, width=6, borderwidth=0,
-                            highlightbackground="black", command=lambda: self.enterInEntry("cos("),
+                            highlightbackground="green", command=lambda: self.enterInEntry("cos("),
                             font=('Helvetica', '11', "bold"))
-        self.cosine.grid(row=4, column=2, sticky="nesw")
+        self.cosine.grid(row=2, column=2, sticky="nesw")
         self.tangent = Button(self.master, text="TAN", height=3, width=6, borderwidth=0,
-                            highlightbackground="black", command=lambda: self.enterInEntry("tan("),
+                            highlightbackground="green", command=lambda: self.enterInEntry("tan("),
                             font=('Helvetica', '11', "bold"))
-        self.tangent.grid(row=4, column=3, sticky="nesw")
+        self.tangent.grid(row=2, column=3, sticky="nesw")
 
         self.exponent = Button(self.master, text="^", height=3, width=6, borderwidth=0,
-                            highlightbackground="black", command=lambda: self.enterInEntry("^"),
+                            highlightbackground="green", command=lambda: self.enterInEntry("^"),
                             font=('Helvetica', '11', "bold"))
-        self.exponent.grid(row=4, column=4, sticky="nesw")
+        self.exponent.grid(row=2, column=4, sticky="nesw")
 
         # Fifth Row
         self.squared = Button(self.master, text="X^2", height=3, width=6, borderwidth=0,
-                            highlightbackground="black", command=lambda: self.enterInEntry("^2"),
+                            highlightbackground="green", command=lambda: self.enterInEntry("^2"),
                             font=('Helvetica', '11', "bold"))
-        self.squared.grid(row=5, column=0, sticky="nesw")
+        self.squared.grid(row=3, column=0, sticky="nesw")
         self.comma = Button(self.master, text=",", height=3, width=6, borderwidth=0,
-                            highlightbackground="black", command=lambda: self.enterInEntry(","),
+                            highlightbackground="green", command=lambda: self.enterInEntry(","),
                             font=('Helvetica', '11', "bold"))
-        self.comma.grid(row=5, column=1, sticky="nesw")
+        self.comma.grid(row=3, column=1, sticky="nesw")
         self.openParen = Button(self.master, text="(", height=3, width=6, borderwidth=0,
-                            highlightbackground="black", command=lambda: self.enterInEntry("("),
+                            highlightbackground="green", command=lambda: self.enterInEntry("("),
                             font=('Helvetica', '11', "bold"))
-        self.openParen.grid(row=5, column=2, sticky="nesw")
+        self.openParen.grid(row=3, column=2, sticky="nesw")
         self.closedParen = Button(self.master, text=")", height=3, width=6, borderwidth=0,
-                            highlightbackground="black", command=lambda: self.enterInEntry(")"),
+                            highlightbackground="green", command=lambda: self.enterInEntry(")"),
                             font=('Helvetica', '11', "bold"))
-        self.closedParen.grid(row=5, column=3, sticky="nesw")
+        self.closedParen.grid(row=3, column=3, sticky="nesw")
 
         self.divide = Button(self.master, text="%", height=3, width=6, borderwidth=0,
                             highlightbackground="blue", command=lambda: self.enterInEntry("/"),
                             font=('Helvetica', '11', "bold"))
-        self.divide.grid(row=5, column=4, sticky="nesw")
+        self.divide.grid(row=3, column=4, sticky="nesw")
 
-        # Sixth Row
+        # Third Row
         self.commonLog = Button(self.master, text="LOG", height=3, width=6, borderwidth=0,
-                            highlightbackground="black", command=lambda: self.enterInEntry("log("),
+                            highlightbackground="green", command=lambda: self.enterInEntry("log("),
                             font=('Helvetica', '11', "bold"))
-        self.commonLog.grid(row=6, column=0, sticky="nesw")
+        self.commonLog.grid(row=4, column=0, sticky="nesw")
         self.seven = Button(self.master, text="7", height=3, width=6, borderwidth=0, command=lambda: self.enterInEntry("7"),
                             font=('Helvetica', '11', "bold"))
-        self.seven.grid(row=6, column=1, sticky="nesw")
+        self.seven.grid(row=4, column=1, sticky="nesw")
         self.eight = Button(self.master, text="8", height=3, width=6, borderwidth=0, command=lambda: self.enterInEntry("8"),
                             font=('Helvetica', '11', "bold"))
-        self.eight.grid(row=6, column=2, sticky="nesw")
+        self.eight.grid(row=4, column=2, sticky="nesw")
         self.nine = Button(self.master, text="9", height=3, width=6, borderwidth=0, command=lambda: self.enterInEntry("9"),
                             font=('Helvetica', '11', "bold"))
-        self.nine.grid(row=6, column=3, sticky="nesw")
+        self.nine.grid(row=4, column=3, sticky="nesw")
 
         self.multiply = Button(self.master, text="X", height=3, width=6, borderwidth=0,
                             highlightbackground="blue", command=lambda: self.enterInEntry("*"),
                             font=('Helvetica', '11', "bold"))
-        self.multiply.grid(row=6, column=4, sticky="nesw")
+        self.multiply.grid(row=4, column=4, sticky="nesw")
 
-        # Seventh Row
+        # Fourth Row
         self.naturalLog = Button(self.master, text="LN", height=3, width=6, borderwidth=0,
-                            highlightbackground="black", command=lambda: self.enterInEntry("ln("),
+                            highlightbackground="green", command=lambda: self.enterInEntry("ln("),
                             font=('Helvetica', '11', "bold"))
-        self.naturalLog.grid(row=7, column=0, sticky="nesw")
+        self.naturalLog.grid(row=5, column=0, sticky="nesw")
         self.four = Button(self.master, text="4", height=3, width=6, borderwidth=0, command=lambda: self.enterInEntry("4"),
                             font=('Helvetica', '11', "bold"))
-        self.four.grid(row=7, column=1, sticky="nesw")
+        self.four.grid(row=5, column=1, sticky="nesw")
         self.five = Button(self.master, text="5", height=3, width=6, borderwidth=0, command=lambda: self.enterInEntry("5"),
                             font=('Helvetica', '11', "bold"))
-        self.five.grid(row=7, column=2, sticky="nesw")
+        self.five.grid(row=5, column=2, sticky="nesw")
         self.six = Button(self.master, text="6", height=3, width=6, borderwidth=0, command=lambda: self.enterInEntry("6"),
                             font=('Helvetica', '11', "bold"))
-        self.six.grid(row=7, column=3, sticky="nesw")
+        self.six.grid(row=5, column=3, sticky="nesw")
 
         self.subtract = Button(self.master, text="-", height=3, width=6, borderwidth=0,
                             highlightbackground="blue", command=lambda: self.enterInEntry("-"),
                             font=('Helvetica', '11', "bold"))
-        self.subtract.grid(row=7, column=4, sticky="nesw")
+        self.subtract.grid(row=5, column=4, sticky="nesw")
 
-        # Eighth Row
+        # Fifth Row
         self.sto = Button(self.master, text="STO->", height=3, width=6, borderwidth=0,
                             highlightbackground="black", font=('Helvetica', '11', "bold"))
-        self.sto.grid(row=8, column=0, sticky="nesw")
+        self.sto.grid(row=6, column=0, sticky="nesw")
         self.one = Button(self.master, text="1", height=3, width=6, borderwidth=0, command=lambda: self.enterInEntry("1"),
                             font=('Helvetica', '11', "bold"))
-        self.one.grid(row=8, column=1, sticky="nesw")
+        self.one.grid(row=6, column=1, sticky="nesw")
         self.two = Button(self.master, text="2", height=3, width=6, borderwidth=0, command=lambda: self.enterInEntry("2"),
                             font=('Helvetica', '11', "bold"))
-        self.two.grid(row=8, column=2, sticky="nesw")
+        self.two.grid(row=6, column=2, sticky="nesw")
         self.three = Button(self.master, text="3", height=3, width=6, borderwidth=0, command=lambda: self.enterInEntry("3"),
                             font=('Helvetica', '11', "bold"))
-        self.three.grid(row=8, column=3, sticky="nesw")
+        self.three.grid(row=6, column=3, sticky="nesw")
 
         self.add = Button(self.master, text="+", height=3, width=6, borderwidth=0,
                             highlightbackground="blue", command=lambda: self.enterInEntry("+"),
                             font=('Helvetica', '11', "bold"))
-        self.add.grid(row=8, column=4, sticky="nesw")
+        self.add.grid(row=6, column=4, sticky="nesw")
 
-        # Ninth Row
+        # Sixth Row
         self.exit = Button(self.master, text="ON", height=3, width=6, borderwidth=0,
                             highlightbackground="black", command=lambda: self.master.destroy(),
                             font=('Helvetica', '11', "bold"))
-        self.exit.grid(row=9, column=0, sticky="nesw")
+        self.exit.grid(row=7, column=0, sticky="nesw")
         self.zero = Button(self.master, text="0", height=3, width=6, borderwidth=0, command=lambda: self.enterInEntry("0"),
                            font=('Helvetica', '11', "bold"))
-        self.zero.grid(row=9, column=1, sticky="nesw")
+        self.zero.grid(row=7, column=1, sticky="nesw")
         self.decimal = Button(self.master, text=".", height=3, width=6, borderwidth=0, command=lambda: self.enterInEntry("."),
                             font=('Helvetica', '11', "bold"))
-        self.decimal.grid(row=9, column=2, sticky="nesw")
+        self.decimal.grid(row=7, column=2, sticky="nesw")
         self.negative = Button(self.master, text="(-)", height=3, width=6, borderwidth=0, command=lambda: self.enterInEntry("(-"),
                             font=('Helvetica', '11', "bold"))
-        self.negative.grid(row=9, column=3, sticky="nesw")
+        self.negative.grid(row=7, column=3, sticky="nesw")
         self.equals = Button(self.master, text="ENTER", height=3, width=6, borderwidth=0,
                             highlightbackground="blue", command=lambda: self.calculate(),
                             font=('Helvetica', '11', "bold"))
-        self.equals.grid(row=9, column=4, sticky="nesw")
+        self.equals.grid(row=7, column=4, sticky="nesw")
 
     # Layout and button changes for when the "second button" is pressed
     def secondBtnFunctions(self):
@@ -266,17 +243,6 @@ class Application(Frame):
         self.modeButton["command"] = lambda: self.destroyMenus()
 
         # Second Row
-        self.alpha["text"] = "A-LOCK"
-        self.variables["text"] = "LINK"
-        self.stat["text"] = "LIST"
-
-        # Third Row
-        self.math["text"] = "TEST"
-        self.apps["text"] = "ANGLE"
-        self.prgm["text"] = "DRAW"
-        self.vars["text"] = "DISTR"
-
-        # Fourth Row
         self.inverse["text"] = "MATRX"
         self.inverse["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
         self.sine["text"] = "SIN^-1"
@@ -289,7 +255,7 @@ class Application(Frame):
         self.exponent["text"] = "π"
         self.exponent["command"] = lambda: [self.enterInEntry("π"), self.secondButton()]
 
-        # Fifth Row
+        # Third Row
         self.squared["text"] = "√"
         self.squared["command"] = lambda: [self.enterInEntry("√("), self.secondButton()]
         self.comma["text"] = "EE"
@@ -302,7 +268,7 @@ class Application(Frame):
         self.divide["text"] = "e"
         self.divide["command"] = lambda: [self.enterInEntry("e"), self.secondButton()]
 
-        # Sixth Row
+        # Fourth Row
         self.commonLog["text"] = "10^x"
         self.commonLog["command"] = lambda: [self.enterInEntry("10^("), self.secondButton()]
         self.seven["text"] = "u"
@@ -315,7 +281,7 @@ class Application(Frame):
         self.multiply["text"] = "["
         self.multiply["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
 
-        # Seventh Row
+        # Fifth Row
         self.naturalLog["text"] = "e"
         self.naturalLog["command"] = lambda: [self.enterInEntry("e"), self.secondButton()]
         self.four["text"] = "L4"
@@ -328,7 +294,7 @@ class Application(Frame):
         self.subtract["text"] = "]"
         self.subtract["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
 
-        # Eighth Row
+        # Sixth Row
         self.sto["text"] = "RCL"
         self.one["text"] = "L1"
         self.one["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
@@ -340,7 +306,7 @@ class Application(Frame):
         self.add["text"] = "MEM"
         self.add["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
 
-        # Ninth Row
+        # Seventh Row
         self.zero["text"] = "CATALOG"
         self.zero["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
         self.zero["font"] = ('Helvetica', '8', "bold")
@@ -358,17 +324,6 @@ class Application(Frame):
         self.modeButton["command"] = lambda: self.modeMenu()
 
         # Second Row
-        self.alpha["text"] = "ALPHA"
-        self.variables["text"] = "X,T,0,n"
-        self.stat["text"] = "STAT"
-
-        # Third Row
-        self.math["text"] = "MATH"
-        self.apps["text"] = "APPS"
-        self.prgm["text"] = "PGRM"
-        self.vars["text"] = "VARS"
-
-        # Fourth Row
         self.inverse["text"] = "x^-1"
         self.inverse["command"] = lambda: self.enterInEntry("x^(-1)")
         self.sine["text"] = "SIN"
@@ -381,7 +336,7 @@ class Application(Frame):
         self.exponent["text"] = "^"
         self.exponent["command"] = lambda: self.enterInEntry("^")
 
-        # Fifth Row
+        # Third Row
         self.squared["text"] = "x^2"
         self.squared["command"] = lambda: self.enterInEntry("^2")
         self.comma["text"] = ","
@@ -394,7 +349,7 @@ class Application(Frame):
         self.divide["text"] = "%"
         self.divide["command"] = lambda: self.enterInEntry("/")
 
-        # Sixth Row
+        # Fourth Row
         self.commonLog["text"] = "LOG"
         self.commonLog["command"] = lambda: self.enterInEntry("log(")
         self.seven["text"] = "7"
@@ -407,7 +362,7 @@ class Application(Frame):
         self.multiply["text"] = "X"
         self.multiply["command"] = lambda: self.enterInEntry("*")
 
-        # Seventh Row
+        # Fifth Row
         self.naturalLog["text"] = "LN"
         self.naturalLog["command"] = lambda: self.enterInEntry("ln(")
         self.four["text"] = "4"
@@ -420,7 +375,7 @@ class Application(Frame):
         self.subtract["text"] = "-"
         self.subtract["command"] = lambda: self.enterInEntry("-")
 
-        # Eighth Row
+        # Sixth Row
         self.sto["text"] = "STO->"
         self.one["text"] = "1"
         self.one["command"] = lambda: self.enterInEntry("1")
@@ -432,7 +387,7 @@ class Application(Frame):
         self.add["text"] = "+"
         self.add["command"] = lambda: self.enterInEntry("+")
 
-        # Ninth Row
+        # Seventh Row
         self.zero["text"] = "0"
         self.zero["command"] = lambda: self.enterInEntry("0")
         self.zero["font"] = ('Helvetica', '11', "bold")

@@ -54,7 +54,7 @@ class Calculate:
         return self.functionsList[function]
 
     # Checks if the current operation is higher in PEMDAS than the previous one
-    def currentOpHasPrec(self, op1, op2):
+    def pemdasCheck(self, op1, op2):
         if op2 == "(" or op2 == ")":
             return False
         elif (op1 == '*' or op1 == '/' or op1 == "^" or op1 == "(") \
@@ -79,7 +79,7 @@ class Calculate:
         else:
             # Start evaluating all numbers and operations based on PEMDAS
             while not self.ops.isEmpty() and self.ops.peek() != "(" and \
-                    self.currentOpHasPrec(self.currentChar, self.ops.peek()):
+                    self.pemdasCheck(self.currentChar, self.ops.peek()):
                 self.pushValue(self.operations(self.ops.pop(), self.vals.pop(), self.vals.pop()))
 
             self.ops.push(self.currentChar)
@@ -117,6 +117,7 @@ class Calculate:
             if self.currentChar in self.nums:
                 self.currentNum += self.currentChar
 
+            # Checks for variables like e or pi
             elif self.currentChar in self.vars:
                 self.pushCurrentNum()
                 self.vals.push(self.vars[self.currentChar])

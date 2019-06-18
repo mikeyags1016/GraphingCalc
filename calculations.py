@@ -63,7 +63,7 @@ class Calculate:
             "^": var2 ** var1
         }
 
-        return self.operators[str(op)]
+        return Decimal(self.operators[str(op)])
 
     # Basic functions
     def functions(self, function, var1):
@@ -76,7 +76,7 @@ class Calculate:
             "√": math.sqrt(var1)
         }
 
-        return self.functionsList[function]
+        return Decimal(self.functionsList[function])
 
     # Checks if the current operation is higher in PEMDAS than the previous one
     def pemdasCheck(self, op1, op2):

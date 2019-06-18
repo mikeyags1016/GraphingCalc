@@ -425,7 +425,6 @@ class Application(Frame):
                                         variable=self.angleMode, value=0)
         self.degree.grid(row=1, column=1)
 
-
     def destroyMenus(self):
         try:
             self.mode.destroy()

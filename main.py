@@ -5,6 +5,5 @@ if __name__ == '__main__':
     app = Application(root)
     app.master.title("Calculator TI-84")
     app.master.resizable(0, 0)
-    app.master.configure(bg="grey")
 
     app.mainloop()

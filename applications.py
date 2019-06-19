@@ -98,11 +98,12 @@ class Application(Frame):
         self.second.grid(row=1, column=0, sticky="nesw")
         self.modeButton = Button(self.master, text="MODE", height=3, width=6, borderwidth=1,
                             highlightbackground="black", font=('Helvetica', '11', "bold"),
-                            command=lambda: self.modeMenu(), relief=RAISED, justify=RIGHT)
+                            command=lambda: self.modeMenuWidget(), relief=RAISED, justify=RIGHT)
         self.modeButton.grid(row=1, column=1, sticky="nesw")
-        self.math = Button(self.master, text="MATH", height=3, width=6, borderwidth=1,
-                           highlightbackground="black", font=('Helvetica', '11', "bold"), relief=RAISED, justify=RIGHT)
-        self.math.grid(row=1, column=2, sticky="nesw")
+        self.mathButton = Button(self.master, text="MATH", height=3, width=6, borderwidth=1,
+                           highlightbackground="black", font=('Helvetica', '11', "bold"),
+                           command=lambda: self.mathMenuWidget(), relief=RAISED, justify=RIGHT)
+        self.mathButton.grid(row=1, column=2, sticky="nesw")
         self.delete = Button(self.master, text="DEL", height=3, width=6,  borderwidth=1,
                             highlightbackground="black", font=('Helvetica', '11', "bold"),
                             command=lambda: self.deleteEnd(), relief=RAISED, justify=RIGHT)
@@ -241,6 +242,8 @@ class Application(Frame):
         # First Row
         self.modeButton["text"] = "QUIT"
         self.modeButton["command"] = lambda: self.destroyMenus()
+        self.mathButton["text"] = "MATH"
+        self.mathButton["command"] = lambda: self.mathMenuWidget()
 
         # Second Row
         self.inverse["text"] = "MATRX"
@@ -321,7 +324,9 @@ class Application(Frame):
     def defaultBtnFunctions(self):
         # First Row
         self.modeButton["text"] = "MODE"
-        self.modeButton["command"] = lambda: self.modeMenu()
+        self.modeButton["command"] = lambda: self.modeMenuWidget()
+        self.mathButton["text"] = "MATH"
+        self.mathButton["command"] = lambda: self.mathMenuWidget()
 
         # Second Row
         self.inverse["text"] = "x^-1"
@@ -399,34 +404,43 @@ class Application(Frame):
         self.equals["command"] = lambda: self.calculate()
 
     # Menu options for mode options
-    def modeMenu(self):
-        self.mode = Toplevel(self.master)
+    def modeMenuWidget(self):
+        self.modeMenu = Toplevel(self.master)
         self.x = self.master.winfo_x()
         self.y = self.master.winfo_y()
-        self.mode.geometry("+%d+%d" % (self.x, self.y))
-        self.mode.resizable(0, 0)
+        self.modeMenu.geometry("+%d+%d" % (self.x, self.y))
+        self.modeMenu.resizable(0, 0)
 
         # Calculator Modes
-        self.normal = Radiobutton(self.mode, text="NORMAL", font=('Helvetica', '8'),
+        self.normal = Radiobutton(self.modeMenu, text="NORMAL", font=('Helvetica', '8'),
                                         variable=self.calcMode, value=0)
         self.normal.grid(row=0, column=0)
-        self.scientific = Radiobutton(self.mode, text="SCI", font=('Helvetica', '8'),
+        self.scientific = Radiobutton(self.modeMenu, text="SCI", font=('Helvetica', '8'),
                                         variable=self.calcMode, value=1)
         self.scientific.grid(row=0, column=1)
-        self.english = Radiobutton(self.mode, text="ENG", font=('Helvetica', '8'),
+        self.english = Radiobutton(self.modeMenu, text="ENG", font=('Helvetica', '8'),
                                         variable=self.calcMode, value=2)
         self.english.grid(row=0, column=2)
 
         # Angle Mode
-        self.radian = Radiobutton(self.mode, text="RADIAN", font=('Helvetica', '8'),
+        self.radian = Radiobutton(self.modeMenu, text="RADIAN", font=('Helvetica', '8'),
                                         variable=self.angleMode, value=1)
         self.radian.grid(row=1, column=0)
-        self.degree = Radiobutton(self.mode, text="DEGREE", font=('Helvetica', '8'),
+        self.degree = Radiobutton(self.modeMenu, text="DEGREE", font=('Helvetica', '8'),
                                         variable=self.angleMode, value=0)
         self.degree.grid(row=1, column=1)
 
+    # Menu options for mode options
+    def mathMenuWidget(self):
+        self.mathMenu = Toplevel(self.master)
+        self.x = self.master.winfo_x()
+        self.y = self.master.winfo_y()
+        self.mathMenu.geometry("+%d+%d" % (self.x, self.y))
+        self.mathMenu.resizable(0, 0)
+
     def destroyMenus(self):
         try:
-            self.mode.destroy()
+            self.modeMenu.destroy()
+            self.mathMenu.destroy()
         except:
             pass

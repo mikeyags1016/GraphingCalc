@@ -86,7 +86,6 @@ class Application(Frame):
 
         try:
             self.replaceEntry(Fraction(self.storedAnswers[-1]).limit_denominator(10000))
-            self.destroyMenus()
         except:
             pass
 

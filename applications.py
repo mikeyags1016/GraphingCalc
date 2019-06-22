@@ -81,6 +81,15 @@ class Application(Frame):
             self.defaultMode = True
             self.defaultBtnFunctions()
 
+    def answerAsFrac(self):
+        from fractions import Fraction
+
+        try:
+            self.replaceEntry(Fraction(self.storedAnswers[-1]).limit_denominator(10000))
+            self.destroyMenus()
+        except:
+            pass
+
     def createWidgets(self):
         self.displayScroll = Scrollbar(self.master)
         self.displayScroll.grid(row=0, column=5, rowspan=8, sticky='ns')
@@ -437,6 +446,10 @@ class Application(Frame):
         self.y = self.master.winfo_y()
         self.mathMenu.geometry("+%d+%d" % (self.x, self.y))
         self.mathMenu.resizable(0, 0)
+
+        self.frac = Button(self.mathMenu, text="Frac", font=('Helvetica', '11'),
+                                        width=20, anchor='w', command=lambda: self.answerAsFrac())
+        self.frac.grid(row=0)
 
     def destroyMenus(self):
         try:

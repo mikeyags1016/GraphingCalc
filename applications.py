@@ -438,7 +438,7 @@ class Application(Frame):
                                         variable=self.angleMode, value=0)
         self.degree.grid(row=1, column=1)
 
-    # Menu options for mode options
+    # Options for math menu
     def mathMenuWidget(self):
         self.mathMenu = Toplevel(self.master)
         self.x = self.master.winfo_x()

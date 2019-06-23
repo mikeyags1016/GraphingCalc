@@ -74,7 +74,9 @@ class Calculate:
             "log": math.log10(var1),
             "ln": math.log(var1),
             "√": math.sqrt(var1),
-            "∛": var1 ** (Decimal(1)/Decimal(3))
+            "∛": var1 ** (Decimal(1)/Decimal(3)),
+            "abs": Decimal(abs(var1)),
+            "round": Decimal(round(var1))
         }
 
         return Decimal(self.functionsList[function])

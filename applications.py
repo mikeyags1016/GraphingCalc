@@ -444,18 +444,31 @@ class Application(Frame):
         self.mathMenu = Toplevel(self.master)
         self.x = self.master.winfo_x()
         self.y = self.master.winfo_y()
-        self.mathMenu.geometry("+%d+%d" % (self.x, self.y))
+        self.mathMenu.geometry("+%d+%d" % (self.x+100, self.y))
         self.mathMenu.resizable(0, 0)
 
+        # Math Menu Options
+        self.mathTitle = Label(self.mathMenu, text="Math:", font=('Helvetica', '11', 'bold'))
+        self.mathTitle.grid(row=0, sticky='W')
         self.frac = Button(self.mathMenu, text="Frac", font=('Helvetica', '11'),
                                         width=20, anchor='w', command=lambda: self.answerAsFrac())
-        self.frac.grid(row=0)
+        self.frac.grid(row=1)
         self.cubed = Button(self.mathMenu, text="^3", font=('Helvetica', '11'),
-                           width=20, anchor='w', command=lambda: self.enterInEntry("^3"))
-        self.cubed.grid(row=1)
+                                        width=20, anchor='w', command=lambda: self.enterInEntry("^3"))
+        self.cubed.grid(row=2)
         self.cubeRoot = Button(self.mathMenu, text="∛(", font=('Helvetica', '11'),
-                            width=20, anchor='w', command=lambda: self.enterInEntry("∛("))
-        self.cubeRoot.grid(row=2)
+                                        width=20, anchor='w', command=lambda: self.enterInEntry("∛("))
+        self.cubeRoot.grid(row=3)
+
+        # Num Meny Options
+        self.numTitle = Label(self.mathMenu, text="Num:", font=('Helvetica', '11', 'bold'))
+        self.numTitle.grid(row=4, sticky='W')
+        self.abs = Button(self.mathMenu, text="abs(", font=('Helvetica', '11'),
+                                        width=20, anchor='w', command=lambda: self.enterInEntry("abs("))
+        self.abs.grid(row=5)
+        self.round = Button(self.mathMenu, text="round(", font=('Helvetica', '11'),
+                                        width=20, anchor='w', command=lambda: self.enterInEntry("round("))
+        self.round.grid(row=6)
 
     def destroyMenus(self):
         try:

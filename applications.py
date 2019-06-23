@@ -85,7 +85,8 @@ class Application(Frame):
         from fractions import Fraction
 
         try:
-            self.replaceEntry(Fraction(self.storedAnswers[-1]).limit_denominator(10000))
+            self.answer = Fraction(self.storedAnswers[-1]).limit_denominator(10000)
+            self.replaceEntry(self.answer)
         except:
             pass
 
@@ -449,6 +450,12 @@ class Application(Frame):
         self.frac = Button(self.mathMenu, text="Frac", font=('Helvetica', '11'),
                                         width=20, anchor='w', command=lambda: self.answerAsFrac())
         self.frac.grid(row=0)
+        self.cubed = Button(self.mathMenu, text="^3", font=('Helvetica', '11'),
+                           width=20, anchor='w', command=lambda: self.enterInEntry("^3"))
+        self.cubed.grid(row=1)
+        self.cubeRoot = Button(self.mathMenu, text="∛(", font=('Helvetica', '11'),
+                            width=20, anchor='w', command=lambda: self.enterInEntry("∛("))
+        self.cubeRoot.grid(row=2)
 
     def destroyMenus(self):
         try:

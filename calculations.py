@@ -73,7 +73,8 @@ class Calculate:
             "tan": math.tan(self.angleMode(self.angleOption, var1)) if var1 != 90 else None,
             "log": math.log10(var1),
             "ln": math.log(var1),
-            "√": math.sqrt(var1)
+            "√": math.sqrt(var1),
+            "∛": var1 ** (Decimal(1)/Decimal(3))
         }
 
         return Decimal(self.functionsList[function])
@@ -148,7 +149,8 @@ class Calculate:
                 self.vals.push(self.vars[self.currentChar])
 
             # Checks for functions like sin or sqrt
-            elif self.currentChar.isalpha() or self.currentChar == "√":
+            elif self.currentChar.isalpha() or self.currentChar == "√" or\
+                self.currentChar == "∛":
                 self.currentFuncName += self.currentChar
 
             elif self.currentChar == "(":

@@ -246,6 +246,8 @@ class Application(Frame):
                             font=('Helvetica', '11', "bold"), relief=RAISED, justify=RIGHT)
         self.equals.grid(row=7, column=4, sticky="nesw")
 
+        self.master.bind('<Return>', lambda event: self.calculate())
+
     # Layout and button changes for when the "second button" is pressed
     def secondBtnFunctions(self):
         # First Row
@@ -294,8 +296,8 @@ class Application(Frame):
         self.multiply["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
 
         # Fifth Row
-        self.naturalLog["text"] = "e"
-        self.naturalLog["command"] = lambda: [self.enterInEntry("e"), self.secondButton()]
+        self.naturalLog["text"] = "e^x"
+        self.naturalLog["command"] = lambda: [self.enterInEntry("e^"), self.secondButton()]
         self.four["text"] = "L4"
         self.four["command"] = lambda: [self.replaceEntry("0"), self.secondButton()]
         self.five["text"] = "L5"
@@ -422,21 +424,21 @@ class Application(Frame):
 
         # Calculator Modes
         self.normal = Radiobutton(self.modeMenu, text="NORMAL", font=('Helvetica', '8'),
-                                        variable=self.calcMode, value=0)
+                                  variable=self.calcMode, value=0)
         self.normal.grid(row=0, column=0)
         self.scientific = Radiobutton(self.modeMenu, text="SCI", font=('Helvetica', '8'),
-                                        variable=self.calcMode, value=1)
+                                   variable=self.calcMode, value=1)
         self.scientific.grid(row=0, column=1)
         self.english = Radiobutton(self.modeMenu, text="ENG", font=('Helvetica', '8'),
-                                        variable=self.calcMode, value=2)
+                                   variable=self.calcMode, value=2)
         self.english.grid(row=0, column=2)
 
         # Angle Mode
         self.radian = Radiobutton(self.modeMenu, text="RADIAN", font=('Helvetica', '8'),
-                                        variable=self.angleMode, value=1)
+                                  variable=self.angleMode, value=1)
         self.radian.grid(row=1, column=0)
         self.degree = Radiobutton(self.modeMenu, text="DEGREE", font=('Helvetica', '8'),
-                                        variable=self.angleMode, value=0)
+                                  variable=self.angleMode, value=0)
         self.degree.grid(row=1, column=1)
 
     # Options for math menu
@@ -444,30 +446,30 @@ class Application(Frame):
         self.mathMenu = Toplevel(self.master)
         self.x = self.master.winfo_x()
         self.y = self.master.winfo_y()
-        self.mathMenu.geometry("+%d+%d" % (self.x+100, self.y))
+        self.mathMenu.geometry("+%d+%d" % (self.x+170, self.y))
         self.mathMenu.resizable(0, 0)
 
         # Math Menu Options
         self.mathTitle = Label(self.mathMenu, text="Math:", font=('Helvetica', '11', 'bold'))
         self.mathTitle.grid(row=0, sticky='W')
         self.frac = Button(self.mathMenu, text="Frac", font=('Helvetica', '11'),
-                                        width=20, anchor='w', command=lambda: self.answerAsFrac())
+                                        width=10, anchor='w', command=lambda: self.answerAsFrac())
         self.frac.grid(row=1)
         self.cubed = Button(self.mathMenu, text="^3", font=('Helvetica', '11'),
-                                        width=20, anchor='w', command=lambda: self.enterInEntry("^3"))
+                                        width=10, anchor='w', command=lambda: self.enterInEntry("^3"))
         self.cubed.grid(row=2)
         self.cubeRoot = Button(self.mathMenu, text="∛(", font=('Helvetica', '11'),
-                                        width=20, anchor='w', command=lambda: self.enterInEntry("∛("))
+                                        width=10, anchor='w', command=lambda: self.enterInEntry("∛("))
         self.cubeRoot.grid(row=3)
 
-        # Num Meny Options
+        # Num Menu Options
         self.numTitle = Label(self.mathMenu, text="Num:", font=('Helvetica', '11', 'bold'))
         self.numTitle.grid(row=4, sticky='W')
         self.abs = Button(self.mathMenu, text="abs(", font=('Helvetica', '11'),
-                                        width=20, anchor='w', command=lambda: self.enterInEntry("abs("))
+                                        width=10, anchor='w', command=lambda: self.enterInEntry("abs("))
         self.abs.grid(row=5)
         self.round = Button(self.mathMenu, text="round(", font=('Helvetica', '11'),
-                                        width=20, anchor='w', command=lambda: self.enterInEntry("round("))
+                                        width=10, anchor='w', command=lambda: self.enterInEntry("round("))
         self.round.grid(row=6)
 
     def destroyMenus(self):

@@ -60,7 +60,8 @@ class Calculate:
             "-": var2 - var1,
             "*": var2 * var1,
             "/": var2 / var1,
-            "^": var2 ** var1
+            "^": var2 ** var1,
+            "E": var2 * (10**var1)
         }
 
         return Decimal(self.operators[str(op)])
@@ -76,7 +77,7 @@ class Calculate:
             "√": math.sqrt(var1),
             "∛": var1 ** (Decimal(1)/Decimal(3)),
             "abs": Decimal(abs(var1)),
-            "round": Decimal(round(var1))
+            "round": Decimal(round(var1)),
         }
 
         return Decimal(self.functionsList[function])

@@ -2,6 +2,8 @@ from tkinter import *
 from tkinter import messagebox
 from calculations import *
 
+# Application setup
+
 class Application(Frame):
     # Initial setup for the master frame that places all of the widgets
     def __init__(self, master):

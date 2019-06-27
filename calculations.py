@@ -92,15 +92,18 @@ class Calculate:
         else:
             return True
 
+    # Pushes the current number being stored on to a value stack
     def pushCurrentNum(self):
         if self.currentNum != "":
             self.vals.push(Decimal(self.currentNum))
             self.currentNum = ""
 
+    # Evualuate the current value under a given function and push it
     def pushValue(self, function):
         self.value = function
         self.vals.push(self.value)
 
+    # Evaluating the current expression
     def evaluateExpr(self):
         # Checks if expression in parenthesis is a negative number
         if self.currentChar == "-" and self.expression[self.index - 1] == "(":
@@ -113,6 +116,7 @@ class Calculate:
 
             self.ops.push(self.currentChar)
 
+    # Evaluate anything within a parenthesis
     def evaluateParen(self):
         # If negative sign is found, evaluate it and remove the negative sign
         if "(-" in self.ops.stack:
@@ -132,11 +136,11 @@ class Calculate:
                 self.expression[self.expression.find("(") - 1] in self.nums:
             self.ops.push("*")
 
+    # Go through the given input and parsing through the expression
     def parse(self):
         # Place holders to store any given current number or function
         self.currentNum = ""
         self.currentFuncName = ""
-
         self.parenCounter = 0
         self.index = 0
 

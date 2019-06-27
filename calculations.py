@@ -2,6 +2,10 @@ import math
 from decimal import Decimal
 from containers import *
 
+"""
+Main expression parser and calculator
+"""
+
 class Calculate:
     def __init__(self, expression,
                  angleOption,

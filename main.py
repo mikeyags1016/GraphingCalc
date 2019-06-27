@@ -1,5 +1,9 @@
 from applications import *
 
+"""
+Application setup and launch
+"""
+
 if __name__ == '__main__':
     root = Tk()
     app = Application(root)

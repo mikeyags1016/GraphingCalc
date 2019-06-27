@@ -1,3 +1,7 @@
+"""
+Storage for data values and operators
+"""
+
 class Stack:
     def __init__(self):
         self.stack = []

@@ -2,7 +2,9 @@ from tkinter import *
 from tkinter import messagebox
 from calculations import *
 
-# Application setup
+"""
+Application Setup and Frame Design
+"""
 
 class Application(Frame):
     # Initial setup for the master frame that places all of the widgets

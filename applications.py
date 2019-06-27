@@ -2,12 +2,6 @@ from tkinter import *
 from tkinter import messagebox
 from calculations import *
 
-# Things to do:
-#
-# Continue Documentation
-# Continue adding functions to calculator
-# Add horizontal slide bar to display
-
 class Application(Frame):
     # Initial setup for the master frame that places all of the widgets
     def __init__(self, master):
